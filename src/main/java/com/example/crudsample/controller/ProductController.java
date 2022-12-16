@@ -68,6 +68,11 @@ public class ProductController {
         productService.deleteProduct(id);
         return "redirect:/list-products";
     }
+    @GetMapping("/category/delete")
+    public String deleteCategory(int id){
+        productService.deleteCategory(id);
+        return "redirect:/list-category";
+    }
     @ModelAttribute("categories")
     public List<Category> listCategory(){
         return productService.findAllCategory();
@@ -81,9 +86,10 @@ public class ProductController {
     private int pId;
     @PostMapping("/product/update")
     public String saveUpdateProduct(Product product){
-        System.out.println("Id::================"+product.getId());
-        product.setId(pId);
-        productService.updateProduct(product);
+//        System.out.println("Id::================"+product.getId());
+//        product.setId(pId);
+//        productService.updateProduct(product);
+        productService.updateProductV2(pId,product);
         return "redirect:/list-products";
     }
 }
